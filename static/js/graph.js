@@ -90,144 +90,6 @@ var option = {
                     formatter: "{c}"
                 }
             },
-            // 关系图的节点数据列表。
-            // 边的 source 和 target 取的是 id，取不到 id 才会取 name
-            //有重复点则不显示了....
-            // data: [{
-            //     id: 'a',
-            //     name: '徐贱云',
-            // }, {
-            //     id: 'b',
-            //     name: '冯可梁',
-            //     // 数据项所在类目的 index。
-            //     category: 1,
-            // }, {
-            //     id: 'c',
-            //     name: '邓志荣',
-            //     category: 1,
-            // }, {
-            //     id: 'd',
-            //     name: '李荣庆',
-            //     category: 1,
-            // }, {
-            //     id: 'e',
-            //     name: '郑志勇',
-            //     category: 1,
-            // }, {
-            //     id: 'f',
-            //     name: '赵英杰',
-            //     category: 1,
-            // }, {
-            //     id: 'g',
-            //     name: '王承军',
-            //     category: 1,
-            // }, {
-            //     id: 'h',
-            //     name: '陈卫东',
-            //     category: 1,
-            // }, {
-            //     id: 'i',
-            //     name: '邹劲松',
-            //     category: 1,
-            // }, {
-            //     id: 'j',
-            //     name: '赵成',
-            //     category: 1,
-            // }, {
-            //     id: 'k',
-            //     name: '陈现忠',
-            //     category: 1,
-            // }, {
-            //     id: 'l',
-            //     name: '陶泳',
-            //     category: 1,
-            // }, {
-            //     id: 'm',
-            //     name: '王德福',
-            //     category: 1,
-            // }],
-            // links: [{
-            //     source: 'a',
-            //     target: 'b',
-            //     value: '朋友'
-            // }, {
-            //     source: 'a',
-            //     target: 'c',
-            //     value: '战友'
-            // }, {
-            //     source: 'a',
-            //     target: 'd',
-            //     value: '房东'
-            // }, {
-            //     source: 'a',
-            //     target: 'e',
-            //     value: '朋友'
-            // }, {
-            //     source: 'b',
-            //     target: 'c',
-            //     value: '表亲'
-            // }, {
-            //     source: 'a',
-            //     target: 'f',
-            //     value: '朋友'
-            // }, {
-            //     source: 'e',
-            //     target: 'f',
-            //     value: '姑姑'
-            // }, {
-            //     source: 'c',
-            //     target: 'i',
-            //     value: '叔叔'
-            // }, {
-            //     source: 'a',
-            //     target: 'm',
-            //     value: '朋友'
-            // }, {
-            //     source: 'g',
-            //     target: 'l',
-            //     value: '爱人'
-            // }, {
-            //     source: 'g',
-            //     target: 'd',
-            //     value: '朋友'
-            // }, {
-            //     source: 'h',
-            //     target: 'f',
-            //     value: '朋友'
-            // }, {
-            //     source: 'j',
-            //     target: 'k',
-            //     value: '朋友'
-            // }, {
-            //     source: 'd',
-            //     target: 'k',
-            //     value: '朋友'
-            // }, {
-            //     source: 'c',
-            //     target: 'l',
-            //     value: '同学'
-            // }],
-            //不行,估计必须追加到原数组末尾才行.待解决
-            // data:[{
-            //     id:'n',
-            //     name:'AAA',
-            //     category:1,
-            // },
-            //     {
-            //     id:'o',
-            //     name:'BBB',
-            //     category:1,
-            // }],
-            // links:[{
-            //     source:'d',
-            //     target:'n',
-            //     value:'什么1',
-            // },
-            //     {
-            //     source:'e',
-            //     target:'o',
-            //     value:'什么2',
-            // }],
             lineStyle: {
                 normal: {
                     opacity: 0.9,
@@ -238,9 +100,6 @@ var option = {
         }
     ]
 };
-//setOption(option: Object, notMerge?: boolean, lazyUpdate?: boolean)
-// myChart.setOption(option);
-// hearClick(myChart);
 
 
 $(document).ready(function () {
@@ -256,36 +115,13 @@ $(document).ready(function () {
         // 抓取提交的input值
         first = $('#' + form_id + ' input').val();
         second = form_id;
-
-        // valueOne = $('#' + form_id + ' input.value1').val();
-        // valueTwo = $('#' + form_id + ' input.value2').val();
-
-        // valueOne = $('.tab-content div.active form input.value1').val();
-        // valueTwo = $('.tab-content div.active form input.value2').val();
-
-        // valueOne = $('form#'+form_id).find('input[name=number-one]').val();
-        // valueTwo = $('form#'+form_id).find('input[name=number-two]').val();
-
-        // valueOne = $('form:visible').find('input[name=number-one]').val();
-        // valueTwo = $('form:visible').find('input[name=number-two]').val();
-
-
         console.log(first, second);
         if (second === 'search1') {
             $.ajax({
                 type: "POST",
                 url: "/",
-                // datatype: 'json',
                 data: {'str_to_solve': first, 'search_type': second},
-                // success: function (results) {
-                // console.log(results);
-                // $('#results').html(results.total)
-                // $('input').val('')
-                // },
                 success: function (json_str) {
-                    // console.log(json_str);
-                    // var data=JSON.parse(json_str);
-                    // console.log(first, second);
                     // 添加各年份按钮
                     console.log('success!');
                     $('#main-parent').empty();
@@ -429,9 +265,6 @@ function addYearButton(arr, data_json, myChart) {
             console.log(i);
             myChart.setOption({
                 series: [{
-                    //访问属性是通过.操作符完成的，但这要求属性名必须是一个有效的变量名.
-                    // 如果属性名包含特殊字符，就必须用''括起来.
-                    // 访问这个属性也无法使用.操作符，必须用['xxx']来访问
                     data: data_json[i].data,
                     links: data_json[i].links
                 }]
